@@ -7,3 +7,4 @@ __pycache__/
 *.png
 
 !images_readme/*.png
+!__init__.py
