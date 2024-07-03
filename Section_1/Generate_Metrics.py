@@ -88,7 +88,7 @@ def sdv_newrow(data_a, data_b,metadata):
     return coverage
 
 if __name__ == '__main__':
-    
+
     # current directory
     exp_dir = os.getcwd()
 
@@ -101,7 +101,7 @@ if __name__ == '__main__':
     confidence_level = 1.96
 
 
-    method_exp_list =[f"Gaussian_Copula_num_rows_{each_num_rows}",f"CTGAN_num_rows_{each_num_rows}",f"Bayesian_Network_num_rows_{each_num_rows}", f"TVAE_num_rows_{each_num_rows}", f"rtvae_num_rows_{each_num_rows}", f"ddpm_num_rows_{each_num_rows}"]
+    method_exp_list =[f"Gaussian_Copula_num_rows_{each_num_rows}",f"CTGAN_num_rows_{each_num_rows}",f"bayesian_network_num_rows_{each_num_rows}", f"TVAE_num_rows_{each_num_rows}", f"rtvae_num_rows_{each_num_rows}", f"ddpm_num_rows_{each_num_rows}"]
 
     len_method_exp_list = len(method_exp_list)
 
