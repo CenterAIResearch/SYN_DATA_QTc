@@ -88,6 +88,7 @@ def sdv_newrow(data_a, data_b,metadata):
     return coverage
 
 if __name__ == '__main__':
+    
     # current directory
     exp_dir = os.getcwd()
 
@@ -128,6 +129,7 @@ if __name__ == '__main__':
         list_of_coverage = []
         list_of_cross_classification = []
 
+        # Cross regression
         # added by me
         list_of_cross_regression = []
 
@@ -205,9 +207,9 @@ if __name__ == '__main__':
             data_b = syn_data
 
             # KL Divergence origin
-            metric_kl=kl_divergence(data_a=data_a, data_b=data_b)
-            # get values from the dictionary metric_kl only for the key ecg_manual_qtcb_binary, sex, tele_manual_qtcfb
-            metric_kl = {key: value for key, value in metric_kl.items() if key in ['ecg_manual_qtcb_binary','sex','tele_manual_qtcfb']}
+            # metric_kl=kl_divergence(data_a=data_a, data_b=data_b)
+            # # get values from the dictionary metric_kl only for the key ecg_manual_qtcb_binary, sex, tele_manual_qtcfb
+            # metric_kl = {key: value for key, value in metric_kl.items() if key in ['ecg_manual_qtcb_binary','sex','tele_manual_qtcfb']}
 
             # KL divergence edited
             # metric_kl=kl_divergence_edited(data_a=data_a, data_b=data_b, bandwidth=0.1)
@@ -240,8 +242,6 @@ if __name__ == '__main__':
                 print("Cluster Measure is None")
                 continue
 
-
-
             # Support Coverage
             # metric_coverage=coverage(data_a=data_a, data_b=data_b)
             # Support Coverage defined by me.
@@ -272,27 +272,16 @@ if __name__ == '__main__':
             print("quality_report._overall_score",quality_report._overall_score)
 
 
-
-            
             quality_report.get_details(property_name='Column Shapes')
-
-
 
             quality_report.get_details(property_name='Column Pair Trends')
 
-            
-
             sdv_avg_con_coverage=sdv_range_coverage_continous_features(sampled_data, syn_data, metadata)
             
-
-
             sdv_avg_stat_sim=sdv_stat_sim_continous_features(sampled_data, syn_data, metadata)
-    
 
             sdv_avg_newrow=sdv_newrow(sampled_data, syn_data, metadata)
 
-
-            
 
             list_of_kl_divergence.append(metric_kl_sum)
             list_of_pairwise_correlation_difference.append(metric_pcd)
@@ -331,7 +320,3 @@ if __name__ == '__main__':
 
         print(f'lists_each_method_exp_{method_exp}.pkl is saved')
         print(list_index)
-
-
-
-

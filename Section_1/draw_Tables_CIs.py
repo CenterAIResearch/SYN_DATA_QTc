@@ -763,15 +763,8 @@ plt.savefig(f'{main_dir}/confidence_intervals_v7.png', bbox_inches='tight')
 render_mpl_table(mean_std_df, header_columns=0, col_width=3.0)
 plt.savefig(f'{main_dir}/mean_std_v7.png', bbox_inches='tight')
 
-# plt.show()
-
-
-# clear the plot
-# plt.clf()
 
 # confidence intervals visualization
-
-# 각 메트릭에 대해 플롯 생성
 metrics = ['PCD', 'CM', 'KL divergence', 'CrCl', 'CrReg', 'Quality Score', 
            'Continuous Features Coverage', 'Stat Sim Continuous Features', 'New Row']
 
