@@ -132,7 +132,7 @@ def plot_confidence_intervals(df, metric, filename):
 current_dir = os.getcwd()
 
 # Main dir to save png files
-main_dir = os.path.join(current_dir, 'png_files')
+main_dir = os.path.join(current_dir+"/Section_1", 'png_files')
 
 # make the directory if it does not exist
 if not os.path.exists(main_dir):
