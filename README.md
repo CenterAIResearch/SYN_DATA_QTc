@@ -1,10 +1,8 @@
-# Set conda environment
-
-sdv package is required.
+# Set up conda environment
 
 ```bash
 conda env create -f environment.yml
-conda activate synthcity
+conda activate qtc_reproduction_env_py_3.10
 ```
 
 # Section 1: Find the best synthetic data generator based on the metrics

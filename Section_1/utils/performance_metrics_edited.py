@@ -514,12 +514,12 @@ def cross_regression_edited(data_a, data_b,
                 elif base_metric == 'r2_score':
                     on_holdout = metrics.r2_score(y_test, reg.predict(x_test))
                     on_synth = metrics.r2_score(y_synth, reg.predict(x_synth))
-
-                     # if on_holdout > 1 or on_synth > 1:
-                    if on_synth / on_holdout >10:
-                        print(on_synth / on_holdout)
-                        print("on_holdout: ", on_holdout)
-                        print("on_synth: ", on_synth)
+                    if on_holdout !=0:
+                        # if on_holdout > 1 or on_synth > 1:
+                        if on_synth / on_holdout >10:
+                            print(on_synth / on_holdout)
+                            print("on_holdout: ", on_holdout)
+                            print("on_synth: ", on_synth)
                 else:
                     raise NotImplementedError('Unknown base metric {}.'.format(base_metric))
 
@@ -594,7 +594,11 @@ def cross_regression_edited(data_a, data_b,
         # if on_holdout is not nan and on_synth is not nan
         if not np.isnan(on_holdout) and not np.isnan(on_synth):
             print("on_holdout and on_synth are not nan")
-        metrics_dict[col_k] = on_synth / on_holdout
+        # metrics_dict[col_k] = on_synth / on_holdout
+        try:
+            metrics_dict[col_k] = on_synth / on_holdout
+        except ZeroDivisionError:
+            metrics_dict[col_k] = np.nan
 
     # if want to return only mean, then use this. If one wants
     # to return crcl for every variable, just return 'metrics_dict'
