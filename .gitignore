@@ -8,4 +8,6 @@ __pycache__/
 
 !images_readme/*.png
 !__init__.py
-!Models_pkl_by_Jun/*.pkl
+!Section_2/Models_pkl_by_Jun/origin/*.pkl
+!Section_2/Models_pkl_by_Jun/syn_bn/*.pkl
+!Section_2/Models_pkl_by_Jun/syn_bn-origin/*.pkl
