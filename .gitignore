@@ -8,3 +8,4 @@ __pycache__/
 
 !images_readme/*.png
 !__init__.py
+!Models_pkl_by_Jun/*.pkl
