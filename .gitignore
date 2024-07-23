@@ -5,6 +5,8 @@ __pycache__/
 *.csv
 *.pkl
 *.png
+*.txt
+*.json
 
 !images_readme/*.png
 !__init__.py
