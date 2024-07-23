@@ -206,13 +206,8 @@ if __name__ == '__main__':
             data_a = sampled_data
             data_b = syn_data
 
-            # KL Divergence origin
-            # metric_kl=kl_divergence(data_a=data_a, data_b=data_b)
-            # # get values from the dictionary metric_kl only for the key ecg_manual_qtcb_binary, sex, tele_manual_qtcfb
-            # metric_kl = {key: value for key, value in metric_kl.items() if key in ['ecg_manual_qtcb_binary','sex','tele_manual_qtcfb']}
 
             # KL divergence edited
-            # metric_kl=kl_divergence_edited(data_a=data_a, data_b=data_b, bandwidth=0.1)
             metric_kl=kl_divergence_edited_v2(data_a=data_a, data_b=data_b)
 
             # check if any value in the dictionary metric_kl is nan
