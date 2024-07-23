@@ -49,11 +49,23 @@ conda activate qtc_reproduction_env_py_3.10
     - Each generated dataset csv will contain an increasing number of data points in increments of 500 (e.g., 500 data points, 1000 data points, etc.), resulting in a total of 10 CSV files.
     - Run Aliro. Please use this [link](https://github.com/HyunjunA/Aliro/tree/qtc_syn_data) to run Aliro.
 
-      ```bash
-      docker-compose -f docker-compose-wheel-builder.yml up
+    - Before running Aliro, you need to modify the choices under the ui key for n_estimators of XGBClassifier in the /Aliro/docker/dbmongo/files/projects.json file. Please refer to the image below.
 
-      docker-compose up
-      ```
+    ![My Image](images_readme/projjsonLoc.png)
+
+    ![My Image](images_readme/xgb_projjson.png)
+
+    - And in the /Aliro/ai/sklearn/config/classifiers.py file, please create the configuration for XGBClassifier with n_estimators as follows:
+
+    ![My Image](images_readme/classifierspy.png)
+
+    ![My Image](images_readme/xgb_classiferspy.png)
+
+    ```bash
+    docker-compose -f docker-compose-wheel-builder.yml up
+
+    docker-compose up
+    ```
 
     - For detailed instructions, please refer to the Aliro [documentation](https://github.com/EpistasisLab/Aliro/blob/master/docs/guides/developerGuide.md#building-docker-images).
     - Upload the original dataset (newz_train.csv) and the synthetic dataset below to Aliro and train the models. After training various models, find the best models for each dataset. Compare models trained on original data vs. synthetic data.
