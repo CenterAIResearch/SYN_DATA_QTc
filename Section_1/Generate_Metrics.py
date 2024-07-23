@@ -21,6 +21,16 @@ from sdmetrics.single_table import NewRowSynthesis
 from utils.performance_metrics_edited import *
 
 def calculate_average_coverage(metric_coverage):
+    """
+    This function calculates the average coverage from a dictionary of metric coverage values.
+
+    Parameters:
+    metric_coverage (dict): A dictionary where the keys are feature names and the values are coverage values.
+
+    Returns:
+    float: The average coverage value across all features.
+    """
+    
     # Extract the first dictionary from the input
     coverage_values = metric_coverage
     
@@ -37,7 +47,19 @@ def calculate_average_coverage(metric_coverage):
 
 
 def sdv_range_coverage_continous_features(data_a, data_b,metadata):
-    
+    """
+    This function computes the average range coverage of continuous features (numerical) between 
+    real and synthetic datasets using the RangeCoverage method.
+
+    Parameters:
+    data_a (pd.DataFrame): The real dataset.
+    data_b (pd.DataFrame): The synthetic dataset.
+    metadata (dict): The metadata describing the datasets, including the data type of each column.
+
+    Returns:
+    float: The average range coverage of continuous features between the real and synthetic datasets.
+    """
+
     list_of_range_coverage_continous_features = []
     # in metadata.columns for the key 'sdtype' is 'numerical'
     for column in metadata.columns:
@@ -55,8 +77,20 @@ def sdv_range_coverage_continous_features(data_a, data_b,metadata):
     return average_coverage
 
 
-def sdv_stat_sim_continous_features(data_a, data_b,metadata):
-    
+def sdv_stat_sim_continous_features(data_a, data_b, metadata):
+    """
+    This function computes the average statistical similarity of continuous features (numerical) between 
+    real and synthetic datasets using the StatisticSimilarity method.
+
+    Parameters:
+    data_a (pd.DataFrame): The real dataset.
+    data_b (pd.DataFrame): The synthetic dataset.
+    metadata (dict): The metadata describing the datasets, including the data type of each column.
+
+    Returns:
+    float: The average statistical similarity of continuous features between the real and synthetic datasets.
+    """
+
     list_of_stat_sim_continous_features = []
     # in metadata.columns for the key 'sdtype' is 'numerical'
     for column in metadata.columns:
@@ -76,7 +110,17 @@ def sdv_stat_sim_continous_features(data_a, data_b,metadata):
 
 
 def sdv_newrow(data_a, data_b,metadata):
-    
+    """
+    This function computes the coverage of synthetic data based on real data using the NewRowSynthesis method.
+
+    Parameters:
+    data_a (pd.DataFrame): The real dataset.
+    data_b (pd.DataFrame): The synthetic dataset.
+    metadata (dict): The metadata describing the datasets.
+
+    Returns:
+    float: The coverage score computed by the NewRowSynthesis method.
+    """
     coverage=NewRowSynthesis.compute(
             real_data=data_a,
             synthetic_data=data_b,
@@ -84,7 +128,6 @@ def sdv_newrow(data_a, data_b,metadata):
             numerical_match_tolerance=0.01,
             synthetic_sample_size=50
         )
-    
     return coverage
 
 if __name__ == '__main__':
