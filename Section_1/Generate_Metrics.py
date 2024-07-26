@@ -30,7 +30,7 @@ def calculate_average_coverage(metric_coverage):
     Returns:
     float: The average coverage value across all features.
     """
-    
+
     # Extract the first dictionary from the input
     coverage_values = metric_coverage
     
@@ -287,9 +287,6 @@ if __name__ == '__main__':
             average_coverage=calculate_average_coverage(metric_coverage)
 
             # Cross classification
-            # need to check how the output is generated
-            # metric_crossclass=cross_classification(data_a=data_a, data_b=data_b)
-            # metric_crossclass=cca_accuracy(data_a=data_a, data_b=data_b)
             metric_crossclass=cca_accuracy_edited(data_a=data_a, data_b=data_b, base_metric='balanced_accuracy')
             metric_crossclass_average = sum([value for key, value in metric_crossclass.items() if key in categorical_columns]) / len(categorical_columns)
 
