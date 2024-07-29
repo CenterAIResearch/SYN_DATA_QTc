@@ -85,13 +85,13 @@ conda activate qtc_reproduction_env_py_3.10
 
       ![My Image](images_readme/projjsonLoc.png)
 
-      <!-- ![My Image](images_readme/xgb_projjson.png) -->
+      ![My Image](images_readme/xgb_projjson.png)
 
       ```json
       {
         "name": "XGBClassifier",
         "path": "xgboost",
-        "categorical_encoding_strategy":..."
+        "categorical_encoding_strategy": "..."
         "description": "eXtreme Gradient B...",
         "url": "https://xgboost.readthedocs.io",
         "schema": {
