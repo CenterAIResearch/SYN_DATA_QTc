@@ -215,7 +215,6 @@ conda activate qtc_reproduction_env_py_3.10
 # Reproduce the training of models in Aliro
 
 - The pickle files of each model in Section_2/Models_pkl_by_Jun can be reproduced by setting up Aliro as shown in the image below.
--
 - Models trained on original data (newz_train.csv)
 
   - Decision Tree Classifier (DTC)
@@ -250,9 +249,9 @@ conda activate qtc_reproduction_env_py_3.10
 We utilized the Python code for synthetic data quality metrics from the paper:
 
 - Goncalves, Andre, et al. "Generation and evaluation of synthetic patient data." BMC Medical Research Methodology 20 (2020): 1-40.
-<!-- github repo -->
-- [SYNDATA Repository](https://github.com/LLNL/SYNDATA)
-- [Performance Metrics Script](https://github.com/LLNL/SYNDATA/blob/main/utils/performance_metrics.py)
+  <!-- github repo -->
+  - [SYNDATA Repository](https://github.com/LLNL/SYNDATA)
+  - [Performance Metrics Script](https://github.com/LLNL/SYNDATA/blob/main/utils/performance_metrics.py)
 
 Some metrics in the Python code have been modified to better suit our data. For detailed information about these modifications, please refer to the sections below.
 
