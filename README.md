@@ -1,3 +1,21 @@
+# Enhanced QTc Interval Monitoring in the CSICU: Evaluating the Impact of Synthetic Data and Machine Learning Techniques
+
+This GitHub repository contains the code and resources for reproducing the experiments conducted in the study "Enhanced QTc Interval Monitoring in the CSICU: Evaluating the Impact of Synthetic Data and Machine Learning Techniques."
+
+## Objectives
+
+The repository aims to provide a comprehensive and reproducible framework for:
+
+1. Evaluating and selecting the best-performing synthetic data generation techniques
+2. Comparing the performance of machine learning models trained on:
+   a) The original data
+   b) The selected synthetic data
+   c) Combined data (original and synthetic)
+
+## Note on Reproducibility
+
+It's important to note that due to the stochastic nature of the synthetic data generation methods used in this study, exact replication of results may be difficult. However, researchers and practitioners can use this repository to approximate the study's findings and observe similar trends.
+
 # Set up conda environment
 
 ```bash
@@ -178,6 +196,9 @@ conda activate qtc_reproduction_env_py_3.10
 We utilized the Python code for synthetic data quality metrics from the paper:
 
 - Goncalves, Andre, et al. "Generation and evaluation of synthetic patient data." BMC Medical Research Methodology 20 (2020): 1-40.
+<!-- github repo -->
+- [SYNDATA Repository](https://github.com/LLNL/SYNDATA)
+- [Performance Metrics Script](https://github.com/LLNL/SYNDATA/blob/main/utils/performance_metrics.py)
 
 Some metrics in the Python code have been modified to better suit our data. For detailed information about these modifications, please refer to the sections below.
 
