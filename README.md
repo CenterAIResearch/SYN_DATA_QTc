@@ -6,7 +6,7 @@ This GitHub repository contains the code and resources for reproducing the exper
 
 The repository aims to provide a comprehensive and reproducible framework for:
 
-1. Evaluating and selecting the best-performing synthetic data generation techniques
+1. Evaluating and selecting the best-performing synthetic data generation techniques, including Gaussian Copula, CTGAN, Bayesian Network, TVAE, RTVAE, and DDPM.
 2. Comparing the performance of machine learning models trained on:
    a) The original data
    b) The selected synthetic data
@@ -65,25 +65,73 @@ conda activate qtc_reproduction_env_py_3.10
       - Run `Synthcity_Synthesize_a_table_(BN)_QTc_replacement_sampling_ML_task.ipynb`.
     - Download the generated data (zip file) to the `Section_2/Syn_Data_for_ML_task` folder in the local repository SYN_DATA_QTc.
     - Each generated dataset csv will contain an increasing number of data points in increments of 500 (e.g., 500 data points, 1000 data points, etc.), resulting in a total of 10 CSV files.
-    - Run Aliro. Please use this [link](https://github.com/HyunjunA/Aliro/tree/qtc_syn_data) to run Aliro.
+    <!-- - Run Aliro. Please use this [link](https://github.com/HyunjunA/Aliro/tree/qtc_syn_data) to run Aliro. -->
 
-    - Before running Aliro, you need to modify the choices under the ui key for n_estimators of XGBClassifier in the /Aliro/docker/dbmongo/files/projects.json file. Please refer to the image below.
+    - To download and run Aliro from the `qtc_syn_data` branch, follow these steps:
 
-    ![My Image](images_readme/projjsonLoc.png)
+      1. **Clone the Repository**: Open your terminal and run the following command to clone the repository:
 
-    ![My Image](images_readme/xgb_projjson.png)
+         ```bash
+         git clone --branch qtc_syn_data https://github.com/EpistasisLab/Aliro.git
+         ```
 
-    - And in the /Aliro/ai/sklearn/config/classifiers.py file, please create the configuration for XGBClassifier with n_estimators as follows:
+      2. **Navigate to the Directory**: Change into the Aliro directory:
+         ```bash
+         cd Aliro
+         ```
 
-    ![My Image](images_readme/classifierspy.png)
+    - Before running Aliro, you need to modify the choices under the ui key for `n_estimators` of `XGBClassifier` in the `/Aliro/docker/dbmongo/files/projects.json` file. Please refer to the image below.
 
-    ![My Image](images_readme/xgb_classiferspy.png)
+      ![My Image](images_readme/projjsonLoc.png)
 
-    ```bash
-    docker-compose -f docker-compose-wheel-builder.yml up
+      <!-- ![My Image](images_readme/xgb_projjson.png) -->
 
-    docker-compose up
-    ```
+      ```json
+      {
+        "name": "XGBClassifier",
+        "path": "xgboost",
+        "categorical_encoding_strategy":..."
+        "description": "eXtreme Gradient B...",
+        "url": "https://xgboost.readthedocs.io",
+        "schema": {
+          "n_estimators": {
+            "description": "The number of ...",
+            "type": "int",
+            "default": 100,
+            "ui": {
+              "style": "radio",
+              "choices": [1, 100, 500],
+              "grid_search": [100]
+            }
+      ```
+
+    - And in the `/Aliro/ai/sklearn/config/classifiers.py` file, please create the configuration for `XGBClassifier` with `n_estimators` as follows:
+
+      ![My Image](images_readme/classifierspy.png)
+
+      <!-- ![My Image](images_readme/xgb_classiferspy.png) -->
+
+      ```json
+      "xgboost.XGBClassifier": {
+        "params": {
+          "n_estimators": [1, 100, 500],
+          "learning_rate": [0.01, 0.1, 1],
+          "max_depth": [1, 3, 5, 10],
+          "min_child_weight": [1, 3, 5, 10, 20],
+          "subsample": [0.5, 1]
+        },
+        "static_parameters": {
+          "objective": "reg:squarederror"
+        }
+      ```
+
+    - Run the following commands to build the Aliro Docker images and start the Aliro containers:
+
+      ```bash
+      docker-compose -f docker-compose-wheel-builder.yml up
+
+      docker-compose up
+      ```
 
     - For detailed instructions, please refer to the Aliro [documentation](https://github.com/EpistasisLab/Aliro/blob/master/docs/guides/developerGuide.md#building-docker-images).
     - Upload the original dataset (newz_train.csv) and the synthetic dataset below to Aliro and train the models. After training various models, find the best models for each dataset. Compare models trained on original data vs. synthetic data.
@@ -96,7 +144,7 @@ conda activate qtc_reproduction_env_py_3.10
 
     - Additionally, move `test_model_newz_individual_model.py` from the `SYN_DATA_QTc` local repository to the `test_trained_models_PSB25_Reproduction` folder within the machine directory in Aliro.
 
-  - Run the following to evaluate the performance of each model using the test_model_newz_individual_model.py script with each pickle file. Ensure that Aliro is currently running before executing the script. The performance results will be saved in a CSV file.
+  - Run the following to evaluate the performance of each model using the `test_model_newz_individual_model.py` script with each pickle file. Ensure that Aliro is currently running before executing the script. The performance results will be saved in a CSV file.
 
     ```bash
     docker ps -a
@@ -120,13 +168,13 @@ conda activate qtc_reproduction_env_py_3.10
 
     ![My Image](images_readme/image_machine.png)
 
-    Now, navigate to the test_trained_models_PSB25_Reproduction directory and run the test_model_newz_individual_model.py script.
+    Now, navigate to the test_trained_models_PSB25_Reproduction directory and run the `test_model_newz_individual_model.py` script.
 
     ```bash
     cd test_trained_models_PSB25_Reproduction
     ```
 
-    Before running test_model_newz_individual_model.py, you need to assign one of the pickle file names from the Models_pkl folder to the `model_pickle_file` variable. Here is an example:
+    Before running `test_model_newz_individual_model.py`, you need to assign one of the pickle file names from the Models_pkl folder to the `model_pickle_file` variable. Here is an example:
 
     ```python
     if __name__ == '__main__':
@@ -140,9 +188,13 @@ conda activate qtc_reproduction_env_py_3.10
 
       <!-- ![My Image](images_readme/image_pkl_model_name.png) -->
 
-  - Then, run test_model_newz_individual_model.py. Modify the model_pickle_file variable to run the script for each pickle file. The metrics for each model will be saved in the results.csv file.
+  - Then, run `test_model_newz_individual_model.py`. Modify the `model_pickle_file variable` to run the script for each pickle file. The metrics for each model will be saved in the results.csv file.
 
-    ![My Image](images_readme/image_run_py_conta.png)
+    <!-- ![My Image](images_readme/image_run_py_conta.png) -->
+
+    ```bash
+    root@b319dc6f67c2:/appsrc/machine/test_trained_models_PSB25_Reproduction# python test_model_newz_individual_model.py
+    ```
 
     Move the `results.csv` file to the local repository `SYN_DATA_QTc` and run `fig_5.py` to visualize the results.
 
