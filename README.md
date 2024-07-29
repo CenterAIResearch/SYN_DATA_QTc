@@ -263,6 +263,6 @@ Some metrics in the Python code have been modified to better suit our data. For 
 
 - The modified metrics can be found in the `utils/performance_metrics_edited.py` file.
 
-- For a comprehensive understanding of the changes and their implications, please review the `README` file in the `utils` directory.
+- For a comprehensive understanding of the changes, please review the `README` file in the `utils` directory.
 
 \* IMPORTANT: The original QTc dataset contains PHI (Personal Health Information) and it is protected by HIPPA compliance and is not be shared in this repository. Please get in touch with AISupport@csmc.edu for more information. The purpose of this repository is to document the code and methods to reproduce the results described in the paper.
