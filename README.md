@@ -14,7 +14,8 @@ The repository aims to provide a comprehensive and reproducible framework for:
 
 ## Note on Reproducibility
 
-It's important to note that due to the stochastic nature of the synthetic data generation methods used in this study, exact replication of results may be difficult. However, researchers and practitioners can use this repository to approximate the study's findings and observe similar trends.
+The stochastic nature of the synthetic data generation methods employed in this study may impede exact replication of results. However, the provided repository enables researchers to approximate our findings and observe comparable trends.
+It is crucial to emphasize that the results and conclusions presented herein are specifically validated on the QTc dataset utilized in this study.
 
 # Set up conda environment
 
