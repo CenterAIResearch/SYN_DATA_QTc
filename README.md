@@ -2,7 +2,7 @@
 
 This GitHub repository contains the code and resources for reproducing the experiments conducted in the study "Enhanced QTc Interval Monitoring in the CSICU: Evaluating the Impact of Synthetic Data and Machine Learning Techniques."
 
-A poster summarizing the results of this study was presented at the **Pacific Symposium on Biocomputing (PSB2025)**.  
+A poster summarizing the results of this study was presented at the **[Pacific Symposium on Biocomputing (PSB2025)](https://psb.stanford.edu/)**.  
 The poster can be accessed [here](https://github.com/CenterAIResearch/SYN_DATA_QTc/blob/main/Poster/QTC_Syn_poster_psb2025-Custom_40x32.pdf).
 
 ## Objectives
