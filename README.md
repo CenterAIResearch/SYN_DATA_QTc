@@ -2,6 +2,9 @@
 
 This GitHub repository contains the code and resources for reproducing the experiments conducted in the study "Enhanced QTc Interval Monitoring in the CSICU: Evaluating the Impact of Synthetic Data and Machine Learning Techniques."
 
+A poster summarizing the results of this study was presented at the **Pacific Symposium on Biocomputing (PSB2025)**.  
+The poster can be accessed [here](https://github.com/CenterAIResearch/SYN_DATA_QTc/blob/main/Poster/QTC_Syn_poster_psb2025-Custom_40x32.pdf).
+
 ## Objectives
 
 The repository aims to provide a comprehensive and reproducible framework for:
@@ -265,4 +268,7 @@ Some metrics in the Python code have been modified to better suit our data. For 
 
 - For a comprehensive understanding of the changes, please review the `README` file in the `utils` directory.
 
-\* IMPORTANT: The original QTc dataset contains PHI (Personal Health Information) and it is protected by HIPAA compliance and is not be shared in this repository. Please get in touch with AISupport@csmc.edu for more information. The purpose of this repository is to document the code and methods to reproduce the results described in the paper.
+> **IMPORTANT:**  
+> The original QTc dataset contains PHI (Personal Health Information) and is protected by HIPAA compliance. It is **not shared** in this repository.  
+> For more information, please contact [AISupport@csmc.edu](mailto:AISupport@csmc.edu).  
+> The purpose of this repository is to document the **code and methods** to reproduce the results described in the paper.
